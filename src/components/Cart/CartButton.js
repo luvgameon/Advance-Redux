@@ -8,7 +8,11 @@ const CartButton = (props) => {
   const showcart = () => {
     dispatch(cartAction.cartreducer());
   };
-  const cartQuantity = useSelector((state) => state.cartitem.totalquantity);
+  let cartQuantity=0;
+  const cart = useSelector((state) => state.cartitem.cartitem);
+  cart.map((i)=>{
+   return cartQuantity=cartQuantity+Number(i.quantity);
+  })
 
   return (
     <button className={classes.button} onClick={showcart}>

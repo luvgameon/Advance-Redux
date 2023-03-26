@@ -1,9 +1,14 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+
+
+
+
 const initialCartState = {
   showcart: false,
   notification: null,
 };
 const initialitemState = {
+  
   cartitem: [],
   totalquantity: 0,
   totalprice: 0,
@@ -41,6 +46,9 @@ const itemSlice = createSlice({
         existitem.quantity++;
         existitem.totalprice = existitem.totalprice + Number(item.price);
       }
+    },
+    replacecart(state,action){
+         state.cartitem=action.payload;
     },
     removecartitem(state, action) {
       const item = action.payload;
